@@ -21,18 +21,19 @@ module.exports = {
     sourceType: 'module',
     project: './tsconfig.json',
   },
-  plugins: ['react', '@typescript-eslint'],
+  plugins: ['react', '@typescript-eslint', 'import'],
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/jsx-one-expression-per-line': 'off',
     'comma-dangle': 'off',
     '@typescript-eslint/comma-dangle': 'off',
+    'react/jsx-no-constructed-context-values': 'off',
   },
   overrides: [
     {
       files: ['**/vite.config.ts'],
       rules: {
-        'import/no-extraneous-dependencies': 'off',
+        'import/no-extraneous-dependencies': 'off'
       },
     },
   ],
