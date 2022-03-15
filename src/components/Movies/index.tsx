@@ -59,8 +59,9 @@ export default function Movies() {
             color={theme as ChipTheme}
             onDelete={() => deleteMovie(movie.id)}
             sx={{
-              fontSize: '2rem',
-              padding: '30px 10px',
+              fontSize: '1rem',
+              fontWeight: 'bold',
+              padding: '20px 10px',
               margin: '5px',
             }}
           />

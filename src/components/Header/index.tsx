@@ -13,15 +13,26 @@ import {
 import { useEffect, useState, useContext } from 'react';
 import { ProgressContext } from 'contexts/ProgressContext';
 import { ThemeContext } from 'contexts/ThemeContext';
+import Login from 'components/Login';
 import WelcomeMessage from '../WelcomeMessage';
+import { AuthContext } from '../../contexts/AuthContext/index';
 
 export default function Header() {
   const [position, setPosition] = useState<string>('Full-stack Dev');
   const [time, setTime] = useState<Date>(() => new Date(Date.now()));
+  const [open, setOpen] = useState<boolean>(false);
   const { lastTime, status } = useContext(ProgressContext);
+  const { authInfo, toggleAuth } = useContext(AuthContext);
   const { theme } = useContext(ThemeContext);
   const onPositionChange = (event: SelectChangeEvent<string>) => {
     setPosition(event.target.value);
+  };
+  const handleLoginOut = () => {
+    if (authInfo.isAuthenticated) {
+      toggleAuth('');
+    } else {
+      setOpen(true);
+    }
   };
 
   useEffect(() => {
@@ -50,8 +61,8 @@ export default function Header() {
             <Box my={1}>
               <Typography variant="h6">{time.toUTCString()}</Typography>
             </Box>
-            <Button variant="contained" color="info">
-              Login
+            <Button variant="contained" color="info" onClick={handleLoginOut}>
+              {authInfo.isAuthenticated ? 'Logout' : 'Login'}
             </Button>
           </Box>
           <Box textAlign="center">
@@ -79,6 +90,7 @@ export default function Header() {
               </FormControl>
             </Box>
           </Box>
+          <Login isOpen={open} onClose={setOpen} />
         </Box>
       </Toolbar>
     </AppBar>
