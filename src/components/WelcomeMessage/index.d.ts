@@ -1,4 +1,4 @@
 export interface WelcomeMessageProps {
   position: string;
-  country?: string
+  country?: string;
 }

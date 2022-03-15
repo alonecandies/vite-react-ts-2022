@@ -18,7 +18,7 @@
     "noImplicitAny": true,
     "noImplicitThis": true,
     "strictNullChecks": true,
-    "baseUrl": "./src",
+    "baseUrl": "./src"
   },
   "include": ["src", "./.eslintrc.js", "./vite.config.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]

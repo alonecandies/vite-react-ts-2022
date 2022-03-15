@@ -49,7 +49,6 @@
   "lint-staged": {
     "src/*.{js,jsx,ts,tsx}": [
       "yarn prettier:fix",
-      "yarn lint:eslint",
       "yarn fix:eslint"
     ]
   }
